@@ -16790,19 +16790,12 @@ Func BROWSERACTION ( $SACTION , $SALL = False )
 			WinSetState ( HWnd ( $SHWND ) , "" , @SW_MINIMIZE )
 		Case "close"
 			BROWSERMOVE ( "bck" )
-			; Auto close all tabs one by one before closing the browser window
 			Local $hCloseWnd = HWnd ( $SHWND )
-			WinActivate ( $hCloseWnd )
-			Sleep ( 500 )
-			; Close tabs one by one with Ctrl+W (max 30 tabs to prevent infinite loop)
-			For $iTab = 1 To 30
-				If Not WinExists ( $hCloseWnd ) Then ExitLoop
-				WinActivate ( $hCloseWnd )
-				ControlSend ( $hCloseWnd , "" , "" , "^w" )
-				Sleep ( 500 )
-			Next
-			; If window still exists after closing all tabs, force close it
-			If WinExists ( $hCloseWnd ) Then WinClose ( $hCloseWnd )
+			; Close the browser window directly (fast)
+			WinClose ( $hCloseWnd )
+			Sleep ( 100 )
+			; Force kill if still exists
+			If WinExists ( $hCloseWnd ) Then WinKill ( $hCloseWnd )
 		Case "show"
 			; Force maximize using ShowWindow API with SW_SHOWMAXIMIZED (3)
 			DllCall ( "user32.dll" , "bool" , "ShowWindow" , "hwnd" , HWnd ( $SHWND ) , "int" , 3 )
