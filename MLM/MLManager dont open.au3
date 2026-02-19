@@ -15979,8 +15979,8 @@ Opt ( "WinTitleMatchMode" , 4 )
 _ShowSplashScreen()
 
 #Region ### START Koda GUI section ### Form=m:\dropbox\upwork\multilogin browser manager\form1.kxf
-$GGUIMAIN = GUICreate ( "Multilogin Window Manager v2.0" , 358 , 660 , 920 , 180 , BitOR ( $GUI_SS_DEFAULT_GUI , $WS_SIZEBOX , $WS_THICKFRAME ) )
-$MAIN = GUICtrlCreateTab ( 8 , 8 , 345 , 589 )
+$GGUIMAIN = GUICreate ( "Multilogin Window Manager v2.0" , 358 , 790 , 920 , 180 , BitOR ( $GUI_SS_DEFAULT_GUI , $WS_SIZEBOX , $WS_THICKFRAME ) )
+$MAIN = GUICtrlCreateTab ( 8 , 8 , 345 , 719 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKLEFT + $GUI_DOCKRIGHT + $GUI_DOCKTOP + $GUI_DOCKBOTTOM )
 $TABSHEET1 = GUICtrlCreateTabItem ( "Main" )
 $LISTVIEW1 = GUICtrlCreateListView ( "Profile|Tab|Handle" , 16 , 72 , 260 , 540 , BitOR ( $LVS_REPORT , $LVS_SHOWSELALWAYS ) )
@@ -16190,14 +16190,14 @@ Global $GBROWSERMOVEINPROGRESS = False
 Global $GSORTINGINPROGRESS = False
 
 GUICtrlCreateTabItem ( "" )
-GUICtrlCreateLabel ( "Dev : ChingChing" , 16 , 600 , 120 , 15 )
+GUICtrlCreateLabel ( "Dev : ChingChing" , 16 , 730 , 120 , 15 )
 GUICtrlSetFont ( -1 , 7 , 400 , 0 , "Arial" )
 GUICtrlSetColor ( -1 , 0x888888 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKBOTTOM + $GUI_DOCKWIDTH + $GUI_DOCKHEIGHT )
 ; === URL INPUT ON MAIN TAB (below Dev label) ===
-$INPUTMAINURL = GUICtrlCreateInput ( "https://www.ticketmaster.com" , 16 , 618 , 220 , 20 )
+$INPUTMAINURL = GUICtrlCreateInput ( "https://www.ticketmaster.com" , 16 , 748 , 220 , 20 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKBOTTOM + $GUI_DOCKWIDTH + $GUI_DOCKHEIGHT )
-$BUTTONMAINOPENURL = GUICtrlCreateButton ( "Open URL" , 240 , 616 , 65 , 24 )
+$BUTTONMAINOPENURL = GUICtrlCreateButton ( "Open URL" , 240 , 746 , 65 , 24 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKBOTTOM + $GUI_DOCKWIDTH + $GUI_DOCKHEIGHT )
 ; === (X button removed - normal title bar X now works properly) ===
 $CHECKBOXONTOP = GUICtrlCreateCheckbox ( "On top" , 296 , 8 , 57 , 17 )
