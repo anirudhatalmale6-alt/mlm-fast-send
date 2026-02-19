@@ -15979,11 +15979,11 @@ Opt ( "WinTitleMatchMode" , 4 )
 _ShowSplashScreen()
 
 #Region ### START Koda GUI section ### Form=m:\dropbox\upwork\multilogin browser manager\form1.kxf
-$GGUIMAIN = GUICreate ( "Multilogin Window Manager v2.0" , 358 , 680 , 920 , 180 , BitOR ( $GUI_SS_DEFAULT_GUI , $WS_SIZEBOX , $WS_THICKFRAME ) )
-$MAIN = GUICtrlCreateTab ( 8 , 8 , 345 , 609 )
+$GGUIMAIN = GUICreate ( "Multilogin Window Manager v2.0" , 358 , 580 , 920 , 180 , BitOR ( $GUI_SS_DEFAULT_GUI , $WS_SIZEBOX , $WS_THICKFRAME ) )
+$MAIN = GUICtrlCreateTab ( 8 , 8 , 345 , 510 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKLEFT + $GUI_DOCKRIGHT + $GUI_DOCKTOP + $GUI_DOCKBOTTOM )
 $TABSHEET1 = GUICtrlCreateTabItem ( "Main" )
-$LISTVIEW1 = GUICtrlCreateListView ( "Profile|Tab|Handle" , 16 , 72 , 260 , 540 , BitOR ( $LVS_REPORT , $LVS_SHOWSELALWAYS ) )
+$LISTVIEW1 = GUICtrlCreateListView ( "Profile|Tab|Handle" , 16 , 72 , 260 , 443 , BitOR ( $LVS_REPORT , $LVS_SHOWSELALWAYS ) )
 GUICtrlSendMsg ( - 1 , $LVM_SETCOLUMNWIDTH , 0 , 130 )
 GUICtrlSendMsg ( - 1 , $LVM_SETCOLUMNWIDTH , 1 , 130 )
 GUICtrlSendMsg ( - 1 , $LVM_SETCOLUMNWIDTH , 2 , 50 )
@@ -15995,11 +15995,11 @@ $BUTTONCLOSEMARKED = GUICtrlCreateButton ( "Close ^" , 284 , 196 , 59 , 18 )
 GUICtrlSetFont ( -1 , 7 , 400 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKTOP + $GUI_DOCKWIDTH + $GUI_DOCKHEIGHT )
 ; === MAIN TAB GROUP BUTTONS A-Z (right side, below MinimizeAll) ===
-GUICtrlCreateLabel ( "Grp:" , 284 , 280 , 25 , 13 )
+GUICtrlCreateLabel ( "Grp:" , 284 , 276 , 25 , 13 )
 GUICtrlSetFont ( -1 , 6 , 800 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKTOP + $GUI_DOCKWIDTH + $GUI_DOCKHEIGHT )
 Global $MAINGROUPBUTTONS[26]
-Local $iMainGrpY = 294
+Local $iMainGrpY = 289
 For $iMG = 0 To 25
 	Local $iCol = Mod ( $iMG , 3 )
 	Local $iRow = Int ( $iMG / 3 )
@@ -16008,15 +16008,15 @@ For $iMG = 0 To 25
 	GUICtrlSetFont ( -1 , 6 , 700 )
 Next
 ; === MAIN TAB WINDOW RESIZE CONTROLS ===
-GUICtrlCreateLabel ( "W:" , 284 , 466 , 15 , 18 )
+GUICtrlCreateLabel ( "W:" , 284 , 456 , 15 , 18 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKTOP + $GUI_DOCKWIDTH + $GUI_DOCKHEIGHT )
-$INPUTMAINWIDTH = GUICtrlCreateInput ( "480" , 299 , 464 , 42 , 20 )
+$INPUTMAINWIDTH = GUICtrlCreateInput ( "480" , 299 , 454 , 42 , 20 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKTOP + $GUI_DOCKWIDTH + $GUI_DOCKHEIGHT )
-GUICtrlCreateLabel ( "H:" , 284 , 488 , 15 , 18 )
+GUICtrlCreateLabel ( "H:" , 284 , 478 , 15 , 18 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKTOP + $GUI_DOCKWIDTH + $GUI_DOCKHEIGHT )
-$INPUTMAINHEIGHT = GUICtrlCreateInput ( "540" , 299 , 486 , 42 , 20 )
+$INPUTMAINHEIGHT = GUICtrlCreateInput ( "540" , 299 , 476 , 42 , 20 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKTOP + $GUI_DOCKWIDTH + $GUI_DOCKHEIGHT )
-$BUTTONMAINRESIZE = GUICtrlCreateButton ( "Apply" , 284 , 510 , 59 , 22 )
+$BUTTONMAINRESIZE = GUICtrlCreateButton ( "Apply" , 284 , 498 , 59 , 20 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKTOP + $GUI_DOCKWIDTH + $GUI_DOCKHEIGHT )
 $BUTTONMOVEBACK = GUICtrlCreateButton ( "<<<" , 24 , 40 , 75 , 25 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKTOP + $GUI_DOCKWIDTH + $GUI_DOCKHEIGHT )
@@ -16188,14 +16188,14 @@ Global $GBROWSERMOVEINPROGRESS = False
 Global $GSORTINGINPROGRESS = False
 
 GUICtrlCreateTabItem ( "" )
-GUICtrlCreateLabel ( "Dev : ChingChing" , 16 , 620 , 120 , 15 )
+GUICtrlCreateLabel ( "Dev : ChingChing" , 16 , 522 , 120 , 15 )
 GUICtrlSetFont ( -1 , 7 , 400 , 0 , "Arial" )
 GUICtrlSetColor ( -1 , 0x888888 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKBOTTOM + $GUI_DOCKWIDTH + $GUI_DOCKHEIGHT )
 ; === URL INPUT ON MAIN TAB (below Dev label) ===
-$INPUTMAINURL = GUICtrlCreateInput ( "https://www.ticketmaster.com" , 16 , 636 , 220 , 20 )
+$INPUTMAINURL = GUICtrlCreateInput ( "https://www.ticketmaster.com" , 16 , 538 , 220 , 20 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKBOTTOM + $GUI_DOCKWIDTH + $GUI_DOCKHEIGHT )
-$BUTTONMAINOPENURL = GUICtrlCreateButton ( "Open URL" , 240 , 634 , 65 , 24 )
+$BUTTONMAINOPENURL = GUICtrlCreateButton ( "Open URL" , 240 , 536 , 65 , 24 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKBOTTOM + $GUI_DOCKWIDTH + $GUI_DOCKHEIGHT )
 ; === (X button removed - normal title bar X now works properly) ===
 $CHECKBOXONTOP = GUICtrlCreateCheckbox ( "On top" , 296 , 8 , 57 , 17 )
