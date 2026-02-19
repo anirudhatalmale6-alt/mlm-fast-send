@@ -15989,19 +15989,17 @@ GUICtrlSendMsg ( - 1 , $LVM_SETCOLUMNWIDTH , 1 , 130 )
 GUICtrlSendMsg ( - 1 , $LVM_SETCOLUMNWIDTH , 2 , 50 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKLEFT + $GUI_DOCKRIGHT + $GUI_DOCKTOP + $GUI_DOCKBOTTOM )
 _GUICTRLLISTVIEW_JUSTIFYCOLUMN ( GUICtrlGetHandle ( $LISTVIEW1 ) , 1 , 2 )
-$BUTTONBROWSERCLOSE = GUICtrlCreateButton ( "Close" , 284 , 168 , 59 , 25 )
+$BUTTONBROWSERCLOSEALL = GUICtrlCreateButton ( "Close All" , 284 , 168 , 59 , 25 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKTOP + $GUI_DOCKWIDTH + $GUI_DOCKHEIGHT )
 $BUTTONCLOSEMARKED = GUICtrlCreateButton ( "Close ^" , 284 , 196 , 59 , 18 )
 GUICtrlSetFont ( -1 , 7 , 400 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKTOP + $GUI_DOCKWIDTH + $GUI_DOCKHEIGHT )
-$BUTTONBROWSERCLOSEALL = GUICtrlCreateButton ( "Close All" , 284 , 280 , 59 , 25 )
-GUICtrlSetResizing ( - 1 , $GUI_DOCKTOP + $GUI_DOCKWIDTH + $GUI_DOCKHEIGHT )
-; === MAIN TAB GROUP BUTTONS A-Z (right side, below Close All) ===
-GUICtrlCreateLabel ( "Grp:" , 284 , 312 , 25 , 13 )
+; === MAIN TAB GROUP BUTTONS A-Z (right side, below MinimizeAll) ===
+GUICtrlCreateLabel ( "Grp:" , 284 , 280 , 25 , 13 )
 GUICtrlSetFont ( -1 , 6 , 800 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKTOP + $GUI_DOCKWIDTH + $GUI_DOCKHEIGHT )
 Global $MAINGROUPBUTTONS[26]
-Local $iMainGrpY = 326
+Local $iMainGrpY = 294
 For $iMG = 0 To 25
 	Local $iCol = Mod ( $iMG , 3 )
 	Local $iRow = Int ( $iMG / 3 )
@@ -16010,15 +16008,15 @@ For $iMG = 0 To 25
 	GUICtrlSetFont ( -1 , 6 , 700 )
 Next
 ; === MAIN TAB WINDOW RESIZE CONTROLS ===
-GUICtrlCreateLabel ( "W:" , 284 , 498 , 15 , 18 )
+GUICtrlCreateLabel ( "W:" , 284 , 466 , 15 , 18 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKTOP + $GUI_DOCKWIDTH + $GUI_DOCKHEIGHT )
-$INPUTMAINWIDTH = GUICtrlCreateInput ( "480" , 299 , 496 , 42 , 20 )
+$INPUTMAINWIDTH = GUICtrlCreateInput ( "480" , 299 , 464 , 42 , 20 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKTOP + $GUI_DOCKWIDTH + $GUI_DOCKHEIGHT )
-GUICtrlCreateLabel ( "H:" , 284 , 520 , 15 , 18 )
+GUICtrlCreateLabel ( "H:" , 284 , 488 , 15 , 18 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKTOP + $GUI_DOCKWIDTH + $GUI_DOCKHEIGHT )
-$INPUTMAINHEIGHT = GUICtrlCreateInput ( "540" , 299 , 518 , 42 , 20 )
+$INPUTMAINHEIGHT = GUICtrlCreateInput ( "540" , 299 , 486 , 42 , 20 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKTOP + $GUI_DOCKWIDTH + $GUI_DOCKHEIGHT )
-$BUTTONMAINRESIZE = GUICtrlCreateButton ( "Apply" , 284 , 542 , 59 , 22 )
+$BUTTONMAINRESIZE = GUICtrlCreateButton ( "Apply" , 284 , 510 , 59 , 22 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKTOP + $GUI_DOCKWIDTH + $GUI_DOCKHEIGHT )
 $BUTTONMOVEBACK = GUICtrlCreateButton ( "<<<" , 24 , 40 , 75 , 25 )
 GUICtrlSetResizing ( - 1 , $GUI_DOCKTOP + $GUI_DOCKWIDTH + $GUI_DOCKHEIGHT )
@@ -16528,12 +16526,10 @@ Func GUICHECKCONTROLS ( )
 		_GUICTRLLISTVIEW_SORTITEMS ( $LISTVIEW1 , $SCLICKEDCOLUMN )
 		IniWrite ( $GCFGINI , "MAIN" , "SortColumn" , $SCLICKEDCOLUMN )
 		$GBROWSERSSORTBY = $SCLICKEDCOLUMN
-	Case $BUTTONBROWSERCLOSE
-		BROWSERACTION ( "close" )
-	Case $BUTTONCLOSEMARKED
-		CLOSEMARKEDPROFILES ( )
 	Case $BUTTONBROWSERCLOSEALL
 		BROWSERACTION ( "close" , True )
+	Case $BUTTONCLOSEMARKED
+		CLOSEMARKEDPROFILES ( )
 	Case $BUTTONBROWSERMINIMIZE
 		BROWSERACTION ( "minimize" )
 	Case $BUTTONBROWSERMINIMIZEALL
@@ -16789,12 +16785,8 @@ Func BROWSERACTION ( $SACTION , $SALL = False )
 		Case "minimize"
 			WinSetState ( HWnd ( $SHWND ) , "" , @SW_MINIMIZE )
 		Case "close"
-			BROWSERMOVE ( "bck" )
 			Local $hCloseWnd = HWnd ( $SHWND )
-			; Close the browser window directly (fast)
 			WinClose ( $hCloseWnd )
-			Sleep ( 100 )
-			; Force kill if still exists
 			If WinExists ( $hCloseWnd ) Then WinKill ( $hCloseWnd )
 		Case "show"
 			; Force maximize using ShowWindow API with SW_SHOWMAXIMIZED (3)
